@@ -1,0 +1,89 @@
+---
+import CompatibilityList from "~/components/compatibility-list.astro";
+import ContentSection from "~/components/content-section.astro";
+import type { CompatibilityItem } from "~/types";
+
+const frameworks: Array<CompatibilityItem> = [
+  {
+    title: "Candy Store",
+    icon: "frameworks/candys",
+    url: "https://www.facebook.com/CandyStore.SJ/",
+  },
+  {
+    title: "Punto Rojo",
+    icon: "frameworks/puntorojo",
+    url: "https://www.facebook.com/puntorojodrugstore/",
+  },
+  {
+    title: "Electro 3",
+    icon: "frameworks/2",
+    url: "https://www.electro3.com.ar/",
+  },
+  {
+    title: "Atinet",
+    icon: "frameworks/atinet",
+    url: "https://atinet.netlify.app/",
+  },
+  {
+    title: "Optix",
+    icon: "frameworks/optix",
+    url: "https://www.optix-fibra.com.ar/",
+  },
+  // {
+  //   title: "Lit",
+  //   icon: "frameworks/lit",
+  //   url: "https://lit.dev/",
+  // },
+];
+
+const platforms: Array<CompatibilityItem> = [
+  {
+    title: "Netlify",
+    icon: "platforms/netlify",
+    url: "https://www.netlify.com/",
+  },
+  {
+    title: "Vercel",
+    icon: "platforms/vercel",
+    url: "https://vercel.com/",
+  },
+  {
+    title: "Cloudflare",
+    icon: "fa-brands:cloudflare",
+    url: "https://pages.cloudflare.com/",
+  },
+  {
+    title: "Render",
+    icon: "platforms/render",
+    url: "https://render.com/",
+  },
+  {
+    title: "GitHub",
+    icon: "fa-brands:github",
+    url: "https://pages.github.com/",
+  },
+  {
+    title: "GitLab",
+    icon: "fa-brands:gitlab",
+    url: "https://docs.gitlab.com/ee/user/project/pages/",
+  },
+];
+---
+
+<ContentSection title="My works" id="compatibility">
+  <Fragment slot="lead">
+    Estas son las empresas con las que pude trabajar. Me encantaría ayudarte en tu  <span class="text-primary">proyecto</span>. Te ayudo a transformar tus ideas en realidades.
+    <span class="text-primary">¡Contáctame!</span>
+    
+  </Fragment>
+  <CompatibilityList
+    items={frameworks}
+    title="Frameworks"
+    url="https://docs.astro.build/core-concepts/framework-components/"
+  />
+  <!-- <CompatibilityList
+    items={platforms}
+    title="Platforms"
+    url="https://docs.astro.build/guides/deploy/"
+  /> -->
+</ContentSection>

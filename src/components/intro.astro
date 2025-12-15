@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon";
+import ContentSection from "~/components/content-section.astro";
+---
+
+<ContentSection title="About me" id="intro">
+  <Icon slot="eyebrow" name="logomark" class="h-32" />
+  <Fragment slot="lead">
+    Soy un desarrollador Frontend y especialista en QA con experiencia en
+    <span class="text-primary">VUE.JS</span> y 
+    <span class="text-primary">Cypress y Playwright</span>
+    Combino habilidades en desarrollo web con técnicas avanzadas de aseguramiento de calidad, enfocándome en crear interfaces fluidas y asegurando su funcionalidad y fiabilidad a través de pruebas automatizadas eficientes.
+  </Fragment>
+  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+    <a
+      href="mailto:tucorreo@ejemplo.com"
+      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+    >
+      <Icon pack="mdi" name="mail" class="h-8" />
+      <span>Mail</span>
+    </a>
+    <a
+      href="https://wa.me/+5492645172697"
+      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
+    >
+      <Icon pack="mdi" name="whatsapp" class="h-8" />
+      <span>Whatsapp</span>
+    </a>
+  </div>
+</ContentSection>

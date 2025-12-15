@@ -1,0 +1,65 @@
+---
+import { Icon } from "astro-icon";
+import ContentSection from "~/components/content-section.astro";
+import type { FeatureItem } from "~/types";
+
+const features: Array<FeatureItem> = [
+  {
+    title: "Vue.js Expertise",
+    description:
+      "Desarrollador Frontend versado en Vue.js, creando interfaces ricas y reactivas con enfoque en la experiencia de usuario y rendimiento",
+    icon: "mdi:vuejs",
+  },
+  {
+    title: "Cypress Pro",
+    description:
+      "Especialista en QA con habilidades avanzadas en Cypress, implementando pruebas automatizadas para garantizar funcionalidades robustas y sin errores",
+    icon: "mdi:language-c",
+  },
+  {
+    title: "Playwright Mastery",
+    description:
+      "Dominio en Playwright para pruebas end-to-end, asegurando compatibilidad cross-browser y la más alta calidad en aplicaciones web",
+    icon: "mdi:drama-masks",
+  },
+  {
+    title: "Laravel Developer",
+    description:
+      "Desarrollador backend experto en Laravel, construyendo arquitecturas de servidor robustas y APIs optimizadas para aplicaciones web modernas",
+    icon: "mdi:laravel",
+  },
+  {
+    title: "WordPress Specialist",
+    description:
+      "Especialista en WordPress, personalizando temas y plugins para crear sitios web que destacan en usabilidad y diseño",
+    icon: "mdi:wordpress",
+  },
+  {
+    title: "Astro Enthusiast",
+    description:
+      "Adoptante temprano de Astro, integrando lo mejor de JavaScript y Static Site Generation para proyectos web ultrarrápidos y SEO-amigables",
+    icon: "mdi:alpha-a-box",
+  },
+];
+---
+
+<ContentSection title="My Skills" id="features">
+  <Fragment slot="lead">
+    Apasionado por el  
+     <span class="text-primary">aprendizaje continuo</span> y la excelencia en el desarrollo web y el aseguramiento de calidad.
+    
+  </Fragment>
+  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    {
+      features.map(({ title, description, icon }) => (
+        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
+          <div class="h-16 w-16 rounded-full border-2 border-current p-3">
+            <Icon name={icon} />
+          </div>
+          <p class="text-center font-extrabold text-xl">{title}</p>
+          <p class="text-center text-offset text-sm">{description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</ContentSection>
