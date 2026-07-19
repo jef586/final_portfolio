@@ -1,49 +1,60 @@
 ---
 import { Icon } from "astro-icon";
-import HeroImage from "~/components/hero-image.astro";
-import type { FooterLink } from "~/types";
-
-const links: Array<FooterLink> = [
-  // {
-  //   url: "https://astro.build/",
-  //   description: "Astro's official website",
-  //   icon: "mdi:home",
-  // },
-  {
-    url: "https://github.com/jef586",
-    description: "Mi repositorio de Github",
-    icon: "fa-brands:github-alt",
-  },
-  {
-    url: "https://www.linkedin.com/in/ezequiel-flores-4343391a8/",
-    description: "Mi Linkedin",
-    icon: "fa-brands:linkedin",
-  },
-  {
-    url: "https://gitlab.com/jeftikas",
-    description: "Mi repositorio de Gitlab",
-    icon: "fa-brands:gitlab",
-  },
-];
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
+<footer class="relative py-12 px-6 border-t border-default">
+  <div class="container mx-auto max-w-6xl">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <Icon name="logomark" class="h-6 text-cyan-400" />
+        <span class="text-sm text-offset">
+          &copy; {new Date().getFullYear()} Ezequiel Flores
+        </span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a
+          href="https://github.com/jef586"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-offset hover:text-default transition-colors"
+          aria-label="GitHub"
+        >
+          <Icon name="fa-brands:github-alt" class="h-5 w-5" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/ezequiel-flores-4343391a8/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-offset hover:text-default transition-colors"
+          aria-label="LinkedIn"
+        >
+          <Icon name="fa-brands:linkedin" class="h-5 w-5" />
+        </a>
+        <a
+          href="https://wa.me/+5492645172697"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-offset hover:text-default transition-colors"
+          aria-label="WhatsApp"
+        >
+          <Icon pack="mdi" name="whatsapp" class="h-5 w-5" />
+        </a>
+        <a
+          href="https://gitlab.com/jeftikas"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-offset hover:text-default transition-colors"
+          aria-label="GitLab"
+        >
+          <Icon name="fa-brands:gitlab" class="h-5 w-5" />
+        </a>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Open to work
+        </span>
+      </div>
+    </div>
   </div>
-  <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      links.map((link) => (
-        <li>
-          <a
-            class="flex h-16 w-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={link.url}
-          >
-            <span class="sr-only">{link.description}</span>
-            <Icon class="h-full" name={link.icon} />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
 </footer>

@@ -1,32 +1,34 @@
 ---
 import { Icon } from "astro-icon";
-import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 
 const navItems: Array<NavItem> = [
-  { title: "My skills", url: "#features" },
-  { title: "My works", url: "#compatibility" },
-  { title: "Portfolio", url: "#showcase" },
+  { title: "Inicio", url: "#hero" },
+  { title: "Skills", url: "#skills" },
+  { title: "Proyectos", url: "#projects" },
+  { title: "Contacto", url: "#contact" },
 ];
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+  class="fixed top-0 z-20 flex w-full items-center justify-between px-6 py-4 transition-all duration-300"
 >
   <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Ezequiel Flores</h1>
-    <Icon name="logomark" class="h-10" />
-    <Icon name="wordmark" class="hidden h-4 sm:block" />
+    <h1 class="sr-only">Ezequiel Flores - QA Automation & Frontend</h1>
+    <Icon name="logomark" class="h-8 text-cyan-400" />
+    <span class="hidden sm:block text-sm font-medium text-default">
+      Ezequiel Flores
+    </span>
   </a>
   <div>
-    <div class="flex items-center gap-6">
+    <div class="flex items-center gap-4">
       <nav class="hidden sm:block">
         <ul class="flex items-center gap-6">
           {
             navItems.map(({ title, url }) => (
               <li>
-                <a class="text-sm" href={url}>
+                <a class="text-sm text-offset hover:text-default transition-colors duration-200" href={url}>
                   {title}
                 </a>
               </li>
@@ -34,38 +36,46 @@ const navItems: Array<NavItem> = [
           }
         </ul>
       </nav>
+      <a
+        href="https://www.linkedin.com/in/ezequiel-flores-4343391a8/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xs font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+      >
+        <Icon pack="mdi" name="linkedin" class="h-4 w-4" />
+        LinkedIn
+      </a>
       <button
         id="open-nav-button"
         type="button"
-        class="btn sm:hidden"
+        class="btn sm:hidden text-default"
         aria-label="Navigation"
       >
-        <Icon pack="mdi" name="menu" class="h-8" />
+        <Icon pack="mdi" name="menu" class="h-6" />
       </button>
-      <ThemeSwitcher />
     </div>
     <div id="menu-modal" class="modal hidden" aria-hidden="true">
-      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
+      <div class="fixed inset-0 bg-[#08080f] px-6 py-4 text-default">
         <div class="space-y-4" role="dialog" aria-modal="true">
           <header class="text-right">
             <button
               id="close-nav-button"
               type="button"
-              class="btn"
+              class="btn text-default"
               aria-label="Close navigation"
             >
-              <Icon pack="mdi" name="close" class="h-8" />
+              <Icon pack="mdi" name="close" class="h-6" />
             </button>
           </header>
-          <div class="flex justify-center">
-            <Icon name="logomark" class="h-16" />
+          <div class="flex justify-center py-8">
+            <Icon name="logomark" class="h-16 text-cyan-400" />
           </div>
           <nav>
             <ul class="flex flex-col">
               {
                 navItems.map(({ title, url }) => (
                   <li>
-                    <a class="block py-4 text-center text-xl" href={url}>
+                    <a class="block py-4 text-center text-xl text-default hover:text-cyan-400 transition-colors" href={url}>
                       {title}
                     </a>
                   </li>
@@ -73,6 +83,35 @@ const navItems: Array<NavItem> = [
               }
             </ul>
           </nav>
+          <div class="flex justify-center gap-4 pt-8">
+            <a
+              href="https://www.linkedin.com/in/ezequiel-flores-4343391a8/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-offset hover:text-default transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Icon name="fa-brands:linkedin" class="h-6 w-6" />
+            </a>
+            <a
+              href="https://github.com/jef586"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-offset hover:text-default transition-colors"
+              aria-label="GitHub"
+            >
+              <Icon name="fa-brands:github-alt" class="h-6 w-6" />
+            </a>
+            <a
+              href="https://wa.me/+5492645172697"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-offset hover:text-default transition-colors"
+              aria-label="WhatsApp"
+            >
+              <Icon pack="mdi" name="whatsapp" class="h-6 w-6" />
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -108,8 +147,11 @@ const navItems: Array<NavItem> = [
   closeNavButton.addEventListener("click", closeMenu);
 
   document.addEventListener("scroll", () => {
-    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
-    header.classList.toggle("fixed-header", d < 0);
+    if (window.scrollY > 100) {
+      header.classList.add("bg-[#08080f]/80", "backdrop-blur-xl", "border-b", "border-white/5");
+    } else {
+      header.classList.remove("bg-[#08080f]/80", "backdrop-blur-xl", "border-b", "border-white/5");
+    }
   });
 
   menu.addEventListener("click", (event) => {
@@ -128,10 +170,6 @@ const navItems: Array<NavItem> = [
 </noscript>
 
 <style>
-  .fixed-header {
-    @apply fixed bottom-auto top-0;
-    @apply border-default bg-default text-default;
-  }
   .modal.is-open {
     @apply block;
   }

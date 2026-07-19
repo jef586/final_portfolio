@@ -1,6 +1,7 @@
 ---
 import "@fontsource-variable/inter";
 import Compatibility from "~/components/compatibility.astro";
+import Contact from "~/components/contact.astro";
 import Features from "~/components/features.astro";
 import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
@@ -12,29 +13,37 @@ import "~/styles/index.css";
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
-  "Te invito a que visites mi página y a que hablemos de tus proyectos";
+  "QA Automation Engineer y Frontend Developer especializado en Playwright, Cypress, Vue.js y Laravel. Creo pruebas E2E confiables y desarrollo interfaces modernas para productos reales.";
 ---
 
 <!doctype html>
-<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+<html lang="es" class="h-full motion-safe:scroll-smooth" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/logomark.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Ezequiel Flores - Portfolio</title>
+    <title>Ezequiel Flores | QA Automation Engineer & Frontend Developer</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="QA Automation, Playwright, Cypress, Vue.js, Laravel, SDET, Frontend Developer, Ezequiel Flores, pruebas automatizadas, CI/CD" />
+    <meta name="author" content="Ezequiel Flores" />
+    <meta name="robots" content="index, follow" />
 
-    <!-- social media -->
-    <meta property="og:title" content="Ezequiel Flores" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ezequiel Flores | QA Automation Engineer & Frontend Developer" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:url" content="https://ezequiel-flores.netlify.app/" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:locale" content="es_ES" />
 
-    <!-- initialize theme -->
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ezequiel Flores | QA Automation Engineer & Frontend Developer" />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Theme initialization -->
     <script is:inline>
       const themeSaved = localStorage.getItem("theme");
 
@@ -59,16 +68,15 @@ const description =
     </script>
   </head>
   <body
-    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
+    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-cyan-500/30 selection:text-white"
   >
     <Header />
     <Splash />
-    <div class="space-y-24 px-8 py-32">
-      <Intro />
-      <Features />
-      <Compatibility />
-      <Showcase />
-    </div>
+    <Intro />
+    <Features />
+    <Compatibility />
+    <Showcase />
+    <Contact />
     <Footer />
   </body>
 </html>

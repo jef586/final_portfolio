@@ -1,29 +1,104 @@
 ---
-import { getCollection } from "astro:content";
-import ContentSection from "~/components/content-section.astro";
-import ShowcaseCard from "~/components/showcase-card.astro";
+import { Icon } from "astro-icon";
+import type { Project } from "~/types";
 
-const featuredSites = await getCollection(
-  "showcase",
-  ({ data }) => "featured" in data,
-);
-const orderedSites = featuredSites.sort(
-  (a, b) => a.data.featured! - b.data.featured!,
-);
+const projects: Project[] = [
+  {
+    title: 'SIIS QA Automation',
+    description: 'Suite completa de pruebas automatizadas E2E para un sistema de información de salud, usando Playwright con patrón POM e integración continua.',
+    tags: ['Playwright', 'POM', 'CI/CD', 'API Testing'],
+    icon: 'mdi:test-tube',
+    url: '#',
+    repo: 'https://github.com/jef586',
+  },
+  {
+    title: 'PryceSync ERP',
+    description: 'Sistema ERP con frontend en Vue.js, backend Laravel y pruebas automatizadas con Cypress para validación de flujos críticos de negocio.',
+    tags: ['Vue.js', 'Laravel', 'Cypress', 'MySQL'],
+    icon: 'mdi:view-dashboard',
+    url: '#',
+    repo: 'https://github.com/jef586',
+  },
+  {
+    title: 'Finca La Loma',
+    description: 'Plataforma web para gestión agrícola con panel administrativo, API REST y pruebas de integración continua desplegada en producción.',
+    tags: ['Vue.js', 'Laravel', 'REST API', 'Netlify'],
+    icon: 'mdi:sprout',
+    url: '#',
+    repo: 'https://github.com/jef586',
+  },
+  {
+    title: "T'ikas Soluciones Digitales",
+    description: 'Agencia digital con múltiples proyectos web, implementando pipelines CI/CD, testing automatizado y deployment continuo.',
+    tags: ['CI/CD', 'Playwright', 'Vue.js', 'DevOps'],
+    icon: 'mdi:lightning-bolt',
+    url: 'https://github.com/jef586',
+    repo: 'https://github.com/jef586',
+  },
+];
 ---
 
-<ContentSection title="Portfolio" id="showcase">
-  <Fragment slot="lead">
-    Explora mi <span class="text-primary">portafolio</span> para ver mis proyectos actuales y futuros. Ten en cuenta que algunos de ellos están aún en construcción, evolucionando constantemente hacia su forma final.
-  </Fragment>
-  <div class="max-w-6xl space-y-2">
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {orderedSites.map((site) => <ShowcaseCard site={site} />)}
+<section
+  id="projects"
+  class="relative py-32 px-6"
+>
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <span class="inline-block px-3 py-1 text-xs font-medium rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-400 mb-4">
+        Proyectos
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        <span class="gradient-cyan-purple">Proyectos Destacados</span>
+      </h2>
+      <p class="text-offset text-lg max-w-2xl mx-auto">
+        Proyectos reales donde apliqué QA automation y desarrollo frontend
+      </p>
     </div>
-    <!-- <p class="text-right text-sm">
-      <a class="text-primary" href="https://astro.build/showcase/">
-        ...and more &rarr;
-      </a>
-    </p> -->
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      {
+        projects.map((p) => (
+          <div class="glass rounded-2xl overflow-hidden group hover:glow-purple transition-all duration-300">
+            <div class="h-40 bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-purple-900/30 flex items-center justify-center relative overflow-hidden">
+              <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]" />
+              <Icon name={p.icon} class="h-16 w-16 text-cyan-400/40 group-hover:text-cyan-400/60 transition-all duration-300 group-hover:scale-110" />
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold text-default mb-2">{p.title}</h3>
+              <p class="text-sm text-offset leading-relaxed mb-4">{p.description}</p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                {
+                  p.tags.map((tag) => (
+                    <span class="px-2 py-0.5 text-xs rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/10">
+                      {tag}
+                    </span>
+                  ))
+                }
+              </div>
+              <div class="flex items-center gap-3">
+                <a
+                  href={p.url}
+                  class="text-sm text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
+                >
+                  Ver proyecto
+                  <Icon pack="mdi" name="arrow-top-right" class="h-3.5 w-3.5" />
+                </a>
+                {
+                  p.repo && (
+                    <a
+                      href={p.repo}
+                      class="text-sm text-offset hover:text-default transition-colors inline-flex items-center gap-1"
+                    >
+                      <Icon name="fa-brands:github-alt" class="h-3.5 w-3.5" />
+                      Código
+                    </a>
+                  )
+                }
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
-</ContentSection>
+</section>

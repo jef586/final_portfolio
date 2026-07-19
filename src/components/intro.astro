@@ -1,30 +1,48 @@
 ---
 import { Icon } from "astro-icon";
-import ContentSection from "~/components/content-section.astro";
 ---
 
-<ContentSection title="About me" id="intro">
-  <Icon slot="eyebrow" name="logomark" class="h-32" />
-  <Fragment slot="lead">
-    Soy un desarrollador Frontend y especialista en QA con experiencia en
-    <span class="text-primary">VUE.JS</span> y 
-    <span class="text-primary">Cypress y Playwright</span>
-    Combino habilidades en desarrollo web con técnicas avanzadas de aseguramiento de calidad, enfocándome en crear interfaces fluidas y asegurando su funcionalidad y fiabilidad a través de pruebas automatizadas eficientes.
-  </Fragment>
-  <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
-    <a
-      href="mailto:tucorreo@ejemplo.com"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon pack="mdi" name="mail" class="h-8" />
-      <span>Mail</span>
-    </a>
-    <a
-      href="https://wa.me/+5492645172697"
-      class="flex items-center justify-center gap-3 border-2 border-current px-6 py-4"
-    >
-      <Icon pack="mdi" name="whatsapp" class="h-8" />
-      <span>Whatsapp</span>
-    </a>
+<section
+  id="about"
+  class="relative py-32 px-6"
+>
+  <div class="container mx-auto max-w-5xl">
+    <div class="text-center mb-12">
+      <span class="inline-block px-3 py-1 text-xs font-medium rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 mb-4">
+        Sobre mí
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+        <span class="gradient-cyan-purple">Resumen Profesional</span>
+      </h2>
+    </div>
+
+    <div class="glass rounded-2xl p-8 md:p-12">
+      <div class="grid md:grid-cols-5 gap-8 items-center">
+        <div class="md:col-span-3 space-y-4">
+          <p class="text-lg text-default leading-relaxed">
+            Soy <strong class="text-primary">Ezequiel Flores</strong>, QA Automation Engineer y Frontend Developer con experiencia en la creación de sistemas de pruebas automatizadas y desarrollo de interfaces modernas.
+          </p>
+          <p class="text-base text-offset leading-relaxed">
+            Combino habilidades en <strong class="text-primary">Playwright</strong>, <strong class="text-primary">Cypress</strong> y <strong class="text-primary">Vue.js</strong> para entregar productos confiables y funcionales. He implementado pruebas E2E, smoke tests y regression tests en sistemas productivos reales, aplicando patrones como Page Object Model para mantener suites escalables y mantenibles.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              Disponible para oportunidades laborales
+            </span>
+          </div>
+        </div>
+        <div class="md:col-span-2 flex justify-center">
+          <div class="relative">
+            <div class="w-48 h-48 rounded-2xl glass flex items-center justify-center">
+              <Icon name="logomark" class="h-24 text-cyan-400/80" />
+            </div>
+            <div class="absolute -bottom-3 -right-3 w-16 h-16 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg">
+              QA
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</ContentSection>
+</section>

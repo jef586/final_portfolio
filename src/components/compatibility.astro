@@ -1,89 +1,65 @@
 ---
-import CompatibilityList from "~/components/compatibility-list.astro";
-import ContentSection from "~/components/content-section.astro";
-import type { CompatibilityItem } from "~/types";
+import { Icon } from "astro-icon";
+import type { ImpactMetric } from "~/types";
 
-const frameworks: Array<CompatibilityItem> = [
+const metrics: ImpactMetric[] = [
   {
-    title: "Candy Store",
-    icon: "frameworks/candys",
-    url: "https://www.facebook.com/CandyStore.SJ/",
+    title: 'Tests E2E',
+    description: 'Automatización de pruebas end-to-end en sistemas productivos reales, asegurando flujos críticos de usuario.',
+    icon: 'mdi:test-tube',
   },
   {
-    title: "Punto Rojo",
-    icon: "frameworks/puntorojo",
-    url: "https://www.facebook.com/puntorojodrugstore/",
+    title: 'Smoke Tests',
+    description: 'Pruebas rápidas de humo para validar despliegues y detectar regresiones tempranas en cada release.',
+    icon: 'mdi:fire',
   },
   {
-    title: "Electro 3",
-    icon: "frameworks/2",
-    url: "https://www.electro3.com.ar/",
+    title: 'Regression Tests',
+    description: 'Suites de regresión automatizadas que protegen contra bugs inesperados al añadir nuevas funcionalidades.',
+    icon: 'mdi:shield-check',
   },
   {
-    title: "Atinet",
-    icon: "frameworks/atinet",
-    url: "https://atinet.netlify.app/",
+    title: 'Page Object Model',
+    description: 'Arquitectura POM para mantener suites de pruebas escalables, reutilizables y fáciles de mantener.',
+    icon: 'mdi:file-tree',
   },
   {
-    title: "Optix",
-    icon: "frameworks/optix",
-    url: "https://www.optix-fibra.com.ar/",
-  },
-  // {
-  //   title: "Lit",
-  //   icon: "frameworks/lit",
-  //   url: "https://lit.dev/",
-  // },
-];
-
-const platforms: Array<CompatibilityItem> = [
-  {
-    title: "Netlify",
-    icon: "platforms/netlify",
-    url: "https://www.netlify.com/",
-  },
-  {
-    title: "Vercel",
-    icon: "platforms/vercel",
-    url: "https://vercel.com/",
-  },
-  {
-    title: "Cloudflare",
-    icon: "fa-brands:cloudflare",
-    url: "https://pages.cloudflare.com/",
-  },
-  {
-    title: "Render",
-    icon: "platforms/render",
-    url: "https://render.com/",
-  },
-  {
-    title: "GitHub",
-    icon: "fa-brands:github",
-    url: "https://pages.github.com/",
-  },
-  {
-    title: "GitLab",
-    icon: "fa-brands:gitlab",
-    url: "https://docs.gitlab.com/ee/user/project/pages/",
+    title: 'Sistemas en Producción',
+    description: 'Experiencia trabajando con aplicaciones desplegadas en entornos productivos con usuarios reales.',
+    icon: 'mdi:rocket-launch',
   },
 ];
 ---
 
-<ContentSection title="My works" id="compatibility">
-  <Fragment slot="lead">
-    Estas son las empresas con las que pude trabajar. Me encantaría ayudarte en tu  <span class="text-primary">proyecto</span>. Te ayudo a transformar tus ideas en realidades.
-    <span class="text-primary">¡Contáctame!</span>
-    
-  </Fragment>
-  <CompatibilityList
-    items={frameworks}
-    title="Frameworks"
-    url="https://docs.astro.build/core-concepts/framework-components/"
-  />
-  <!-- <CompatibilityList
-    items={platforms}
-    title="Platforms"
-    url="https://docs.astro.build/guides/deploy/"
-  /> -->
-</ContentSection>
+<section
+  id="impact"
+  class="relative py-32 px-6"
+>
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <span class="inline-block px-3 py-1 text-xs font-medium rounded-full border border-cyan-500/20 bg-cyan-500/5 text-cyan-400 mb-4">
+        Experiencia
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        <span class="gradient-cyan-purple">Impacto Profesional</span>
+      </h2>
+      <p class="text-offset text-lg max-w-2xl mx-auto">
+        Lo que aporto a cada proyecto y equipo de trabajo
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {
+        metrics.map((m) => (
+          <div class="glass rounded-2xl p-6 hover:glow-cyan transition-all duration-300 group">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-600/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <Icon name={m.icon} class="h-6 w-6 text-cyan-400" />
+            </div>
+            <h3 class="text-lg font-bold text-default mb-2">{m.title}</h3>
+            <p class="text-sm text-offset leading-relaxed">{m.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

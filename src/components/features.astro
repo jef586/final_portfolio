@@ -1,65 +1,105 @@
 ---
 import { Icon } from "astro-icon";
-import ContentSection from "~/components/content-section.astro";
-import type { FeatureItem } from "~/types";
+import type { CategoryGroup } from "~/types";
 
-const features: Array<FeatureItem> = [
+const categories: CategoryGroup[] = [
   {
-    title: "Vue.js Expertise",
-    description:
-      "Desarrollador Frontend versado en Vue.js, creando interfaces ricas y reactivas con enfoque en la experiencia de usuario y rendimiento",
-    icon: "mdi:vuejs",
+    key: 'qa',
+    label: 'QA Automation',
+    icon: 'mdi:test-tube',
+    skills: [
+      { name: 'Playwright', icon: 'mdi:alpha-p-box', category: 'qa' },
+      { name: 'Cypress', icon: 'mdi:alpha-c-box', category: 'qa' },
+      { name: 'Selenium', icon: 'mdi:web', category: 'qa' },
+      { name: 'API Testing', icon: 'mdi:api', category: 'qa' },
+      { name: 'E2E Testing', icon: 'mdi:test-tube', category: 'qa' },
+      { name: 'Page Object Model', icon: 'mdi:code-braces', category: 'qa' },
+    ],
   },
   {
-    title: "Cypress Pro",
-    description:
-      "Especialista en QA con habilidades avanzadas en Cypress, implementando pruebas automatizadas para garantizar funcionalidades robustas y sin errores",
-    icon: "mdi:language-c",
+    key: 'frontend',
+    label: 'Frontend',
+    icon: 'mdi:monitor-screenshot',
+    skills: [
+      { name: 'Vue.js', icon: 'mdi:vuejs', category: 'frontend' },
+      { name: 'React', icon: 'mdi:alpha-r-box', category: 'frontend' },
+      { name: 'TypeScript', icon: 'mdi:alpha-t-box', category: 'frontend' },
+      { name: 'Astro', icon: 'mdi:alpha-a-box', category: 'frontend' },
+      { name: 'Tailwind CSS', icon: 'mdi:alpha-t-box-outline', category: 'frontend' },
+      { name: 'HTML / CSS', icon: 'mdi:language-html5', category: 'frontend' },
+    ],
   },
   {
-    title: "Playwright Mastery",
-    description:
-      "Dominio en Playwright para pruebas end-to-end, asegurando compatibilidad cross-browser y la más alta calidad en aplicaciones web",
-    icon: "mdi:drama-masks",
+    key: 'backend',
+    label: 'Backend',
+    icon: 'mdi:server',
+    skills: [
+      { name: 'Laravel', icon: 'mdi:laravel', category: 'backend' },
+      { name: 'PHP', icon: 'mdi:alpha-p-box-outline', category: 'backend' },
+      { name: 'Node.js', icon: 'mdi:alpha-n-box', category: 'backend' },
+      { name: 'REST APIs', icon: 'mdi:connection', category: 'backend' },
+      { name: 'MySQL', icon: 'mdi:database', category: 'backend' },
+      { name: 'Git', icon: 'mdi:git', category: 'backend' },
+    ],
   },
   {
-    title: "Laravel Developer",
-    description:
-      "Desarrollador backend experto en Laravel, construyendo arquitecturas de servidor robustas y APIs optimizadas para aplicaciones web modernas",
-    icon: "mdi:laravel",
-  },
-  {
-    title: "WordPress Specialist",
-    description:
-      "Especialista en WordPress, personalizando temas y plugins para crear sitios web que destacan en usabilidad y diseño",
-    icon: "mdi:wordpress",
-  },
-  {
-    title: "Astro Enthusiast",
-    description:
-      "Adoptante temprano de Astro, integrando lo mejor de JavaScript y Static Site Generation para proyectos web ultrarrápidos y SEO-amigables",
-    icon: "mdi:alpha-a-box",
+    key: 'devops',
+    label: 'DevOps / CI',
+    icon: 'mdi:code-tags',
+    skills: [
+      { name: 'GitHub Actions', icon: 'fa-brands:github', category: 'devops' },
+      { name: 'GitLab CI', icon: 'fa-brands:gitlab', category: 'devops' },
+      { name: 'Docker', icon: 'mdi:alpha-d-box', category: 'devops' },
+      { name: 'Netlify', icon: 'mdi:alpha-n-box-outline', category: 'devops' },
+      { name: 'Vercel', icon: 'mdi:alpha-v-box', category: 'devops' },
+      { name: 'CI/CD', icon: 'mdi:alpha-c-box-outline', category: 'devops' },
+    ],
   },
 ];
 ---
 
-<ContentSection title="My Skills" id="features">
-  <Fragment slot="lead">
-    Apasionado por el  
-     <span class="text-primary">aprendizaje continuo</span> y la excelencia en el desarrollo web y el aseguramiento de calidad.
-    
-  </Fragment>
-  <ul class="grid max-w-6xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    {
-      features.map(({ title, description, icon }) => (
-        <li class="flex flex-col items-center gap-4 border border-default bg-offset p-6">
-          <div class="h-16 w-16 rounded-full border-2 border-current p-3">
-            <Icon name={icon} />
+<section
+  id="skills"
+  class="relative py-32 px-6"
+>
+  <div class="container mx-auto max-w-6xl">
+    <div class="text-center mb-16">
+      <span class="inline-block px-3 py-1 text-xs font-medium rounded-full border border-purple-500/20 bg-purple-500/5 text-purple-400 mb-4">
+        Mis habilidades
+      </span>
+      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4">
+        <span class="gradient-cyan-purple">Skills</span>
+      </h2>
+      <p class="text-offset text-lg max-w-2xl mx-auto">
+        Tecnologías y herramientas que uso para construir productos confiables y modernos
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      {
+        categories.map((cat) => (
+          <div class="glass rounded-2xl p-6 md:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-600/20 flex items-center justify-center">
+                <Icon name={cat.icon} class="h-5 w-5 text-cyan-400" />
+              </div>
+              <h3 class="text-lg font-bold text-default">{cat.label}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {
+                cat.skills.map((skill) => (
+                  <span
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm border border-default bg-default/40 text-default hover:border-cyan-500/30 hover:bg-cyan-500/5 transition-colors duration-200"
+                  >
+                    <Icon name={skill.icon} class="h-4 w-4 text-cyan-400" />
+                    {skill.name}
+                  </span>
+                ))
+              }
+            </div>
           </div>
-          <p class="text-center font-extrabold text-xl">{title}</p>
-          <p class="text-center text-offset text-sm">{description}</p>
-        </li>
-      ))
-    }
-  </ul>
-</ContentSection>
+        ))
+      }
+    </div>
+  </div>
+</section>
